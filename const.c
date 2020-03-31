@@ -8,3 +8,26 @@ int * const p = &a; //p指针变量是const类型，不能被修改。奥利给�
 
 指向const变量的const指针
 const int * const p = &a;
+
+
+C++的类指针
+class Box
+{
+  private:
+    float length, width, height;
+  public:
+    Box()
+    {
+      length = 1; width = 1; height = 1;
+    }
+    Box(float L, float W, float H)
+    {
+      length = L; width = W; height = H;
+    }
+    ~Box() {}
+    float Volume() { return length*width*height }
+}
+
+Box box1(1,2,3);
+float (Box::*ptr)() = &Box::Volume;
+cout << (box.*ptr)() << endl;
